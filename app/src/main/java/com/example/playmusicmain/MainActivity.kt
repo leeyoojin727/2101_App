@@ -32,13 +32,43 @@ class MainActivity : AppCompatActivity() {
                 if (mediaPlayer == null) {
                     mediaPlayer = MediaPlayer.create(this, R.raw.busker_loneliness_amplifier)
 
+
+                    //음악 리스트에서 음악 클릭 시
+                    // 노래 가사 출력 - jsoup
+                    Thread(Runnable {
+                        val builder = StringBuilder()
+                        val url = "https://www.genie.co.kr/detail/songInfo?xgnm="
+                        val addr = "81302357"
+                        val doc = Jsoup.connect(url + addr).get()
+                        val link = doc.select("#pLyrics").select("p").text()
+
+                        val builder_info = StringBuilder()
+                        val link_info = doc.select(".name").text()
+
+                        builder.append(link).append(" ")
+                        builder_info.append(link_info).append(" ")
+
+
+                        runOnUiThread() {
+                            binding.tvInfo.setText(builder_info.toString())
+                            binding.tvInfo.isSelected = true
+
+                            binding.tvMusic.setText(builder.toString())
+                            //text 흐르게 출력
+                            binding.tvMusic.isSelected = true
+                        }
+                    }).start()
+
                 }
                 binding.btnPlay.setBackgroundResource(R.drawable.ic_pausemusic)
                 mediaPlayer?.start()
+
+
+
             } else {
                 binding.btnPlay.setBackgroundResource(R.drawable.ic_startmusic)
                 mediaPlayer?.pause()
-
+                binding.tvMusic.isActivated=false
             }
 
         }
@@ -48,32 +78,6 @@ class MainActivity : AppCompatActivity() {
            setFragment()
         }*/
 
-
-
-        //음악 리스트에서 음악 클릭 시
-        // 노래 가사 출력 - jsoup
-            Thread(Runnable {
-                val builder = StringBuilder()
-                val url = "https://www.genie.co.kr/detail/songInfo?xgnm="
-                val addr = "81302357"
-                val doc = Jsoup.connect(url + addr).get()
-                val link = doc.select("#pLyrics").select("p").text()
-
-                val builder_info = StringBuilder()
-                val link_info = doc.select(".name").text()
-
-                builder.append(link).append(" ")
-                builder_info.append(link_info).append(" ")
-
-                runOnUiThread() {
-                    binding.tvInfo.setText(builder_info.toString())
-                    binding.tvInfo.isSelected = true
-
-                    binding.tvMusic.setText(builder.toString())
-                    //text 흐르게 출력
-                    binding.tvMusic.isSelected = true
-                }
-            }).start()
         }
 
 
