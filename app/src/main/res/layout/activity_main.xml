@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -9,22 +10,44 @@
 
     <ToggleButton
         android:id="@+id/btn_play"
-        android:layout_width="wrap_content"
+        android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_marginBottom="24dp"
         android:background="@drawable/ic_startmusic"
         android:backgroundTint="#8F888A"
         android:textOff=" "
         android:textOn=" "
-        app:layout_constraintBottom_toTopOf="@+id/tv_music"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btn_list"
+        app:layout_constraintHorizontal_bias="0.949"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.888"
-        tools:layout_editor_absoluteX="456dp" />
+        app:layout_constraintVertical_bias="0.088" />
+
+    <TextView
+        android:id="@+id/tv_info"
+        android:layout_width="350dp"
+        android:layout_height="70dp"
+        android:text="wait"
+        android:textSize="20dp"
+        android:ellipsize="marquee"
+        android:focusable="true"
+        android:gravity="center_vertical"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:scrollHorizontally="true"
+        android:textColor="#D8D8D4"
+        android:singleLine="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btn_play"
+        app:layout_constraintHorizontal_bias="0.47"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.082" />
 
     <TextView
         android:id="@+id/tv_music"
         android:layout_width="619dp"
-        android:layout_height="220dp"
+        android:layout_height="245dp"
 
         android:ellipsize="marquee"
         android:focusable="true"
@@ -47,11 +70,11 @@
         android:id="@+id/btn_list"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="28dp"
         android:background="@drawable/ic_menu"
         android:backgroundTint="#8F888A"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.901"
+        app:layout_constraintHorizontal_bias="0.878"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
