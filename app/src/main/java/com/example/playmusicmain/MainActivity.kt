@@ -78,14 +78,14 @@ class MainActivity : AppCompatActivity() {
            setFragment()
         }*/
 
-        }
+    }
 
 
     //백그라운드로 넘어갔을 때 음악 멈춤
     override fun onStop(){
         super.onStop()
         mediaPlayer?.release()
-            mediaPlayer = null
+        mediaPlayer = null
     }
 
     override fun onDestroy() {
